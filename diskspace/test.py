@@ -6,10 +6,14 @@ import os
 class TestMethods(unittest.TestCase):
 
     def test_bytes_to_readable(self):
-        blocks = 10
-        result = (blocks/2)
-        result = str(format(result,'.2f'))+'Kb'
-        self.assertEqual(bytes_to_readable(blocks),result)
+        result = ['512.00','128.00','256.00','512.00']
+        blocks = [1,256,524288,1073741824]
+        datatype = ['B','Kb','Mb','Gb']
+        counter = 0
+        for block in blocks:
+           result[counter] = result[counter]+(datatype[counter])
+           self.assertEqual(bytes_to_readable(block),result[counter])
+           counter= counter +1
     
     def test_subprocess_check_output(self):
         depth = -1
@@ -23,14 +27,13 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(subprocess_check_output(string),result)
     
             
-#    def test_print_tree(self):
+    #def test_print_tree(self):
+        
+    #    self.assertEqual()
 
- #       self.assertEqual()
+    #def test_show_space_list(self):
 
- #   def test_show_space_list(self):
- #       self.assertEqual()
-#class TestListMethods(unittest.TestCase):
-
+    #    self.assertEqual()
 
 if __name__ == '__main__':
     unittest.main()
